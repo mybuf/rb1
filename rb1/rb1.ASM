@@ -23,27 +23,34 @@ __iar0 EQU [00H]
 @MAIN .SECTION 'CODE'
 _main PROC
 begin:
-#pragma debug scope 2 1 ; 5 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
-#line 5 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
+#pragma debug scope 2 1 ; 6 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
+#line 6 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
+MOV A,02dh
+MOV __wdtc,A
+#line 8 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
 MOV A,05h
 MOV __intc0,A
-#line 6 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
+#line 9 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
 MOV A,087h
 MOV __tmr0c,A
-#line 7 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
+#line 10 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
 MOV A,06h
 MOV __tmr0,A
+#line 10 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
+JMP L3
 L2:
+#pragma debug scope 3 2 ; 14 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
+#line 14 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
+CLR WDT
 L3:
-#pragma debug scope 3 2 ; 9 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
-#line 9 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
-#pragma debug scope 2 1 ; 9 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
+#line 12 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
+#pragma debug scope 2 1 ; 12 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
 JMP L2
 L1:
-#line 15 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
+#line 19 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
 JMP $
 _main ENDP
-#line 21 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
+#line 25 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"
 @@ISR_Timer .SECTION AT 08H 'CODE'
 RETI
 #line 3 "E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c"

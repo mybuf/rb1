@@ -17,41 +17,49 @@
 0006	0000	nop
 0007	0000	nop
 				;4	{
-				;5		_intc0 = 0x05 ; //定时器1 打开 
+				;5		
+				;6		_wdtc = 0x2d ;
 				begin:
 				_main:
 				@MAIN .SECTION 'CODE'
-0009	0F05	mov     a, 5H
-000A	008B	mov     INTC0, a
-				;6		_tmr0c = 0x87 ; 
-000B	0F87	mov     a, 87H
-000C	008D	mov     TMR0C, a
-				;7		_tmr0  = 256-250 ;
-000D	0F06	mov     a, 6H
-000E	008C	mov     TMR0, a
-				;8	
-				;9		while(1)
+0009	0F2D	mov     a, 2DH
+000A	009C	mov     WDTC, a
+				;7		
+				;8		_intc0 = 0x05 ; //定时器1 打开 
+000B	0F05	mov     a, 5H
+000C	008B	mov     INTC0, a
+				;9		_tmr0c = 0x87 ; // 定时器 , 128分频
+000D	0F87	mov     a, 87H
+000E	008D	mov     TMR0C, a
+				;10		_tmr0  = 256-250 ;
+000F	0F06	mov     a, 6H
+0010	008C	mov     TMR0, a
+0011	2813	jmp     L3
+				;11	
+				;12		while(1)
 				L3:
+0013	2812	jmp     L2
+				;13		{
+				;14			_clrwdt() ;
 				L2:
-000F	280F	jmp     $
-				;10		{
-				;11			
-				;12			
-				;13		}
-				;14		
-				;15	}
+0012	0001	clr     wdt
+				;15			
+				;16			
+				;17		}
+				;18		
+				;19	}
 				L1:
-0010	2810	jmp     $
-				;16	
-				;17	
-				;18	// 定时器函数
-				;19	#pragma vector ISR_Timer @ 0x08
-				;20	void ISR_Timer(void)
-				;21	{
+0014	2814	jmp     $
+				;20	
+				;21	
+				;22	// 定时器函数
+				;23	#pragma vector ISR_Timer @ 0x08
+				;24	void ISR_Timer(void)
+				;25	{
 				@@ISR_Timer .SECTION 'CODE'
 0008	0004	reti
-				;22		
-				;23		
-				;24		
-				;25	}
+				;26		
+				;27		
+				;28		
+				;29	}
 				data .SECTION 'DATA'

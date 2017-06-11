@@ -27,45 +27,53 @@
    4  0000              _main PROC
    4  0000              begin:
 
-;   5: 	_intc0 = 0x05 ; //定时器1 打开 
-   5  0000  0F05        MOV A,05h
-   5  0001  008B        MOV __intc0,A
+;   6: 	_wdtc = 0x2d ;
+   6  0000  0F2D        MOV A,02dh
+   6  0001  009C        MOV __wdtc,A
 
-;   6: 	_tmr0c = 0x87 ; 
-   6  0002  0F87        MOV A,087h
-   6  0003  008D        MOV __tmr0c,A
+;   8: 	_intc0 = 0x05 ; //定时器1 打开 
+   8  0002  0F05        MOV A,05h
+   8  0003  008B        MOV __intc0,A
 
-;   7: 	_tmr0  = 256-250 ;
-   7  0004  0F06        MOV A,06h
-   7  0005  008C        MOV __tmr0,A
-   7  0006              L2:
-   7  0006              L3:
+;   9: 	_tmr0c = 0x87 ; // 定时器 , 128分频
+   9  0004  0F87        MOV A,087h
+   9  0005  008D        MOV __tmr0c,A
 
-;   9: 	while(1)
-   9  0006  2800     R  JMP L2
-   9  0007              L1:
+;  10: 	_tmr0  = 256-250 ;
+  10  0006  0F06        MOV A,06h
+  10  0007  008C        MOV __tmr0,A
+  10  0008  2800     R  JMP L3
+  10  0009              L2:
 
-;  15: }
-  15  0007  2800     R  JMP $
-  15  0008              _main ENDP
+;  14: 		_clrwdt() ;
+  14  0009  0001        CLR WDT
+  14  000A              L3:
 
-;  21: {
-  21  0000              @@ISR_Timer .SECTION AT 08H 'CODE'
-  21  0000  0004        RETI
+;  12: 	while(1)
+  12  000A  2800     R  JMP L2
+  12  000B              L1:
+
+;  19: }
+  19  000B  2800     R  JMP $
+  19  000C              _main ENDP
+
+;  25: {
+  25  0000              @@ISR_Timer .SECTION AT 08H 'CODE'
+文件：rb1.c        盛群编译器版本 3.00 页次2 
+
+  25  0000  0004        RETI
 
 ;   3: void main()
    3  0000              STARTSEC .SECTION  COM_L 'CODE'
    3  0000              STARTUP:
+文件：rb1.c        盛群编译器版本 3.00 页次2
+
    3  0000              STARTSEC .SECTION  COM_E 'CODE'
    3  0000  0003        RET
    3  0000              @CODE .SECTION AT 0 'CODE'
-文件：rb1.c        盛群编译器版本 3.00 页次2 
-
    3  0000  2000     R  CALL STARTUP
    3  0001  2800     R  JMP begin
    3  0002              @DUMMY PROC
-文件：rb1.c        盛群编译器版本 3.00 页次2
-
    3  0002  2000     R  CALL _main
    3  0003              @DUMMY ENDP
 

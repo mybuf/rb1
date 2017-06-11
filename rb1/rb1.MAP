@@ -14,7 +14,7 @@ Input Library File: D:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x
      0000h     0002h    0003h      CODE               @CODE (E:\MYWK\wk\rb1\software\rb1\rb1\RB1.OBJ)
      0003h     0003h    0001h      CODE               STARTSEC (E:\MYWK\wk\rb1\software\rb1\rb1\RB1.OBJ)
      0008h     0008h    0001h      CODE               @@ISR_Timer (E:\MYWK\wk\rb1\software\rb1\rb1\RB1.OBJ)
-     0009h     0010h    0008h      CODE               @MAIN (E:\MYWK\wk\rb1\software\rb1\rb1\RB1.OBJ)
+     0009h     0014h    000ch      CODE               @MAIN (E:\MYWK\wk\rb1\software\rb1\rb1\RB1.OBJ)
 
      Local Sections
 
@@ -25,7 +25,7 @@ Input Library File: D:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x
 
 ROM Usage Statistics
      Size      Used     Percentage
-     0400h     000dh    1%
+     0400h     0011h    1%
 
 RAM Usage Statistics
      Size      Used     Percentage
