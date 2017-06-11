@@ -1,0 +1,43 @@
+
+连接器　版本8.7.3.170508
+Input Object File: E:\MYWK\wk\rb1\software\rb1\rb1\RB1.OBJ
+
+Input Library File: D:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\MATH6.LIB
+Input Library File: D:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\time_srsc.lib
+Input Library File: D:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\ctype_srsc.lib
+Input Library File: D:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\math_srsc.lib
+Input Library File: D:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\stdlib_srsc.lib
+Input Library File: D:\Program Files\Holtek MCU Development Tools\HT-IDE3000V7.x\LIB\string_srsc.lib
+
+
+     Start     End      Length     Class    AvgIns    Name
+     0000h     0002h    0003h      CODE               @CODE (E:\MYWK\wk\rb1\software\rb1\rb1\RB1.OBJ)
+     0003h     0003h    0001h      CODE               STARTSEC (E:\MYWK\wk\rb1\software\rb1\rb1\RB1.OBJ)
+     0008h     0008h    0001h      CODE               @@ISR_Timer (E:\MYWK\wk\rb1\software\rb1\rb1\RB1.OBJ)
+     0009h     0010h    0008h      CODE               @MAIN (E:\MYWK\wk\rb1\software\rb1\rb1\RB1.OBJ)
+
+     Local Sections
+
+     Start     End      Length     Class    AvgIns    Name
+     0040h     0040h    0000h      LOCAL    0         @DUMMY (E:\MYWK\wk\rb1\software\rb1\rb1\RB1.OBJ)
+     0040h     0040h    0000h      LOCAL    0         _main (E:\MYWK\wk\rb1\software\rb1\rb1\RB1.OBJ)
+
+
+ROM Usage Statistics
+     Size      Used     Percentage
+     0400h     000dh    1%
+
+RAM Usage Statistics
+     Size      Used     Percentage
+     0040h     0000h    0%
+
+Use Stack Count
+_main: 0
+
+Call Tree
+    @DUMMY
+        _main (0)
+
+HLINK : 程序的开始执行点在程序段'@CODE'（地址0）。定义在'E:\MYWK\wk\rb1\software\rb1\rb1\RB1.OBJ' 文件中
+
+错误总数 : 0  警告总数 : 0

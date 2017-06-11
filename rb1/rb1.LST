@@ -1,0 +1,73 @@
+文件：rb1.c        盛群编译器版本 3.00 页次1
+
+
+
+;   4: {
+   4  0000              __extresb EQU [024H]
+   4  0000              __wdtc EQU [01cH]
+   4  0000              __ctrl1 EQU [01bH]
+   4  0000              __pawu EQU [013H]
+   4  0000              __papu EQU [012H]
+   4  0000              __pac EQU [011H]
+   4  0000              __pa EQU [010H]
+   4  0000              __tmr0c EQU [0dH]
+   4  0000              __tmr0 EQU [0cH]
+   4  0000              __intc0 EQU [0bH]
+   4  0000              __status EQU [0aH]
+   4  0000              __wdts EQU [09H]
+   4  0000              __tblh EQU [08H]
+   4  0000              __tblp EQU [07H]
+   4  0000              __pcl EQU [06H]
+   4  0000              __acc EQU [05H]
+   4  0000              __mp1 EQU [03H]
+   4  0000              __iar1 EQU [02H]
+   4  0000              __mp0 EQU [01H]
+   4  0000              __iar0 EQU [00H]
+   4  0000              @MAIN .SECTION 'CODE'
+   4  0000              _main PROC
+   4  0000              begin:
+
+;   5: 	_intc0 = 0x05 ; //定时器1 打开 
+   5  0000  0F05        MOV A,05h
+   5  0001  008B        MOV __intc0,A
+
+;   6: 	_tmr0c = 0x87 ; 
+   6  0002  0F87        MOV A,087h
+   6  0003  008D        MOV __tmr0c,A
+
+;   7: 	_tmr0  = 256-250 ;
+   7  0004  0F06        MOV A,06h
+   7  0005  008C        MOV __tmr0,A
+   7  0006              L2:
+   7  0006              L3:
+
+;   9: 	while(1)
+   9  0006  2800     R  JMP L2
+   9  0007              L1:
+
+;  15: }
+  15  0007  2800     R  JMP $
+  15  0008              _main ENDP
+
+;  21: {
+  21  0000              @@ISR_Timer .SECTION AT 08H 'CODE'
+  21  0000  0004        RETI
+
+;   3: void main()
+   3  0000              STARTSEC .SECTION  COM_L 'CODE'
+   3  0000              STARTUP:
+   3  0000              STARTSEC .SECTION  COM_E 'CODE'
+   3  0000  0003        RET
+   3  0000              @CODE .SECTION AT 0 'CODE'
+文件：rb1.c        盛群编译器版本 3.00 页次2 
+
+   3  0000  2000     R  CALL STARTUP
+   3  0001  2800     R  JMP begin
+   3  0002              @DUMMY PROC
+文件：rb1.c        盛群编译器版本 3.00 页次2
+
+   3  0002  2000     R  CALL _main
+   3  0003              @DUMMY ENDP
+
+
+        0 Errors

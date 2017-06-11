@@ -1,0 +1,57 @@
+				;file E:\MYWK\wk\rb1\software\rb1\rb1\rb1.c
+				;1	#include "HT48R002.h"
+				;2	
+				;3	void main()
+				@CODE .SECTION 'CODE'
+				include HT48R002.inc
+0000	2003	call    STARTSEC
+0001	2809	jmp     begin
+				@DUMMY .SECTION 'CODE'
+0002	2009	call    begin
+				STARTSEC:
+				STARTUP:
+				STARTSEC:
+0003	0003	ret
+0004	0000	nop
+0005	0000	nop
+0006	0000	nop
+0007	0000	nop
+				;4	{
+				;5		_intc0 = 0x05 ; //定时器1 打开 
+				begin:
+				_main:
+				@MAIN .SECTION 'CODE'
+0009	0F05	mov     a, 5H
+000A	008B	mov     INTC0, a
+				;6		_tmr0c = 0x87 ; 
+000B	0F87	mov     a, 87H
+000C	008D	mov     TMR0C, a
+				;7		_tmr0  = 256-250 ;
+000D	0F06	mov     a, 6H
+000E	008C	mov     TMR0, a
+				;8	
+				;9		while(1)
+				L3:
+				L2:
+000F	280F	jmp     $
+				;10		{
+				;11			
+				;12			
+				;13		}
+				;14		
+				;15	}
+				L1:
+0010	2810	jmp     $
+				;16	
+				;17	
+				;18	// 定时器函数
+				;19	#pragma vector ISR_Timer @ 0x08
+				;20	void ISR_Timer(void)
+				;21	{
+				@@ISR_Timer .SECTION 'CODE'
+0008	0004	reti
+				;22		
+				;23		
+				;24		
+				;25	}
+				data .SECTION 'DATA'
