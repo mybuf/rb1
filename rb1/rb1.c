@@ -28,25 +28,25 @@ void main()
 	 		111 : 2^15 / Fs
 	 */
 	 
-	_wdts = 0x07 ; //125ns ¶¨Ê±Ò»´Î
+	_wdts = 0x07 ; //125ns å®šæ—¶ä¸€æ¬¡
 	
 	/*	INTC0
-		bit5	TOF	timer0 ÖĞ¶ÏÇëÇó±êÖ¾Î»
-		bit4	INTF	Íâ²¿ÖĞ¶ÏÇëÇó±êÖ¾Î»
-		bit2	TOE	timer0 ÖĞ¶ÏÊ¹ÄÜ
-		bit1	INTE	Íâ²¿ÖĞ¶ÏÊ¹ÄÜ
-		bit0	EMI		×ÜÖĞ¶ÏÊ¹ÄÜ
+		bit5	TOF	timer0 ä¸­æ–­è¯·æ±‚æ ‡å¿—ä½
+		bit4	INTF	å¤–éƒ¨ä¸­æ–­è¯·æ±‚æ ‡å¿—ä½
+		bit2	TOE	timer0 ä¸­æ–­ä½¿èƒ½
+		bit1	INTE	å¤–éƒ¨ä¸­æ–­ä½¿èƒ½
+		bit0	EMI		æ€»ä¸­æ–­ä½¿èƒ½
 	*/
-	_intc0 = 0x05 ; //¶¨Ê±Æ÷1 ´ò¿ª 
-	_tmr0c = 0x87 ; // ¶¨Ê±Æ÷ , 128·ÖÆµ
-	_tmr0  = 256-8 ; // 125ns * 8 = 1us //¶¨Ê±1us
+	_intc0 = 0x05 ; //å®šæ—¶å™¨1 æ‰“å¼€ 
+	_tmr0c = 0x87 ; // å®šæ—¶å™¨ , 128åˆ†é¢‘
+	_tmr0  = 256-8 ; // 125ns * 8 = 1us //å®šæ—¶1us
 	counter = 0 ;
 	p1ms_flg = 0 ;
 	
 	while(1)
 	{
 		_clrwdt() ;//
-		if(p1ms_flg==1) { // 1ms ´¦Àí
+		if(p1ms_flg==1) { // 1ms å¤„ç†
 			
 			
 			
@@ -58,11 +58,12 @@ void main()
 }
 
 
-// ¶¨Ê±Æ÷º¯Êı
+// å®šæ—¶å™¨å‡½æ•°
 void ISR_Timer(void)
 {
+	_tmr0  = 256-8 ;
 	counter++ ;
-	if(counter>999) { // 1ms
+	if(counter>998) { // 1ms
 		counter = 0 ;	
 		p1ms_flg = 1 ;
 	}
